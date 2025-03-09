@@ -23,7 +23,7 @@ for elem in "${listElem[@]}"; do
         echo "Creation du projet : $elem"
         mkdir -p "$elem"/{bin,src,include}
 
-        # Creation du Makefile
+        # Creation du Makefile avec support pour `make run`
         cat <<EOF > "$elem/Makefile"
 CC=g++
 CFLAGS=-Wall -Wextra -std=c++17
@@ -39,6 +39,14 @@ all: \$(EXEC)
 %.o: %.cpp
 	\$(CC) \$(CFLAGS) -c \$< -o \$@
 
+run: all
+	@if [ -f \$(EXEC) ]; then \\
+		echo "Execution de \$(EXEC)..."; \\
+		\$(EXEC); \\
+	else \\
+		echo "Erreur : l'executable \$(EXEC) n'existe pas. Compilez avec 'make'."; \\
+	fi
+
 clean:
 	rm -f src/*.o \$(EXEC)
 EOF
@@ -51,7 +59,7 @@ EOF
 - **bin/** : Contient les fichiers executables.
 - **src/** : Contient les fichiers sources (.cpp).
 - **include/** : Contient les fichiers d'en-tête (.hpp).
-- **Makefile** : Pour compiler le projet.
+- **Makefile** : Pour compiler et executer le projet.
 
 ## Compilation
 Utilisez la commande suivante pour compiler le projet :
@@ -62,7 +70,7 @@ make
 ## Execution
 L'executable est situe dans **bin/** et peut être lance avec :
 \`\`\`sh
-./bin/$elem
+make run
 \`\`\`
 
 ## Nettoyage
