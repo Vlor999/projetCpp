@@ -21,7 +21,7 @@ for elem in "${listElem[@]}"; do
         echo "Le repertoire '$elem' existe dejà, passage au suivant..."
     else
         echo "Creation du projet : $elem"
-        mkdir -p "$elem"/{bin,src,include}
+        mkdir -p "$elem"/{bin,src,include,data}
 
         # Creation du Makefile avec support pour `make run`
         cat <<EOF > "$elem/Makefile"

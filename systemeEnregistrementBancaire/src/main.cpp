@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#define FILE "include/account.txt"
+#define FILE "data/account.txt"
 
 int main() {
     vector<BanqueAccount> listAccount = getAccountFromFile(FILE);
@@ -15,6 +15,9 @@ int main() {
         account.display();
         cout << "-------------------\n";
     }
+
+    BanqueAccount newAccount("John Doe", 1000);
+    ajouteCompte(FILE, newAccount);
 
     return EXIT_SUCCESS;
 }

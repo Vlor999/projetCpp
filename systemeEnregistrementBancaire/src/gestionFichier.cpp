@@ -51,7 +51,7 @@ vector<BanqueAccount> getAccountFromFile(const string& filename) {
 }
 
 void ajouteCompte(const string& filename, const BanqueAccount& account) {
-    ofstream fileWritter(filename);
+    ofstream fileWritter(filename, ios::app);
     string toAdd = "{\n";
     toAdd += "    name : " + account.getName() + ";\n";
     toAdd += "    amount : " + to_string(account.getAmount()) + ";\n";
