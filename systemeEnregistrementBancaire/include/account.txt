@@ -1,0 +1,84 @@
+{
+    name : willem Adnet;
+    amount : 0; 
+}
+{
+    name : John Doe;
+    amount : 1500; 
+}
+{
+    name : Jane Smith;
+    amount : 2300; 
+}
+{
+    name : Alice Johnson;
+    amount : 500; 
+}
+{
+    name : Bob Brown;
+    amount : 1200; 
+}
+{
+    name : Charlie Davis;
+    amount : 800; 
+}
+{
+    name : Emily Evans;
+    amount : 1700; 
+}
+{
+    name : Frank Green;
+    amount : 900; 
+}
+{
+    name : Grace Harris;
+    amount : 2100; 
+}
+{
+    name : Henry Jackson;
+    amount : 1100; 
+}
+{
+    name : Irene King;
+    amount : 1400; 
+}
+{
+    name : Jack Lee;
+    amount : 600; 
+}
+{
+    name : Karen Miller;
+    amount : 2000; 
+}
+{
+    name : Larry Nelson;
+    amount : 1300; 
+}
+{
+    name : Mary Owens;
+    amount : 1600; 
+}
+{
+    name : Nancy Parker;
+    amount : 700; 
+}
+{
+    name : Oscar Quinn;
+    amount : 1800; 
+}
+{
+    name : Paul Roberts;
+    amount : 1000; 
+}
+{
+    name : Quinn Scott;
+    amount : 1900; 
+}
+{
+    name : Rachel Turner;
+    amount : 2200; 
+}
+{
+    name : Steve Walker;
+    amount : 2500; 
+}

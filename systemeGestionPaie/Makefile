@@ -3,22 +3,26 @@ CFLAGS=-Wall -Wextra -std=c++17
 SRC=$(wildcard src/*.cpp)
 OBJ=$(SRC:.cpp=.o)
 EXEC=bin/systemeGestionPaie
+INCLUDE=include/
 
-all: $(EXEC)
+all: bin $(EXEC)
+
+bin:
+	mkdir -p bin
 
 $(EXEC): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(EXEC)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+bin/%.o: src/%.cpp $(INCLUDE)/*.hpp
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
 
 run: all
 	@if [ -f $(EXEC) ]; then \
-		echo "Execution de $(EXEC)..."; \
-		$(EXEC); \
-	else \
-		echo "Erreur : l'executable $(EXEC) n'existe pas. Compilez avec 'make'."; \
+		echo "Exécution de $(EXEC)..."; \
+		$(EXEC); 	else \
+		echo "Erreur : l'exécutable $(EXEC) n'existe pas. Compilez avec 'make'."; \
 	fi
 
 clean:
-	rm -f src/*.o $(EXEC)
+	rm -f bin/*.o $(EXEC)
+
