@@ -84,6 +84,13 @@ Pour supprimer les fichiers objets et l'executable :
 make clean
 \`\`\`
 EOF
+        cat <<EOF > "$elem/src/main.cpp"
+#include <iostream>
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return EXIT_SUCCESS;
+}
+EOF
 
         # Creation d'un .gitignore (au niveau global)
         echo -e "bin/\n*.o" > "$elem/.gitignore"
