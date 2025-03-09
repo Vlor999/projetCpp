@@ -2,6 +2,7 @@
 #include <vector>
 #include "bankAccount.hpp"
 #include "gestionFichier.hpp"
+#include "menu.hpp"
 
 using namespace std;
 
@@ -9,15 +10,7 @@ using namespace std;
 
 int main() {
     vector<BanqueAccount> listAccount = getAccountFromFile(FILE);
-
-    cout << "📋 Liste des comptes bancaires :\n";
-    for (const BanqueAccount& account : listAccount) {
-        account.display();
-        cout << "-------------------\n";
-    }
-
-    BanqueAccount newAccount("John Doe", 1000);
-    ajouteCompte(FILE, newAccount);
+    launchMenu(listAccount, FILE);
 
     return EXIT_SUCCESS;
 }

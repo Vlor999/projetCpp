@@ -36,7 +36,6 @@ private:
     std::string id;
 
 public:
-
     BanqueAccount(const std::string& name, double initialAmount)
         : name(name), amount(initialAmount), id(uuid::generate_uuid_v4()) {}
 
@@ -45,9 +44,11 @@ public:
     std::string getName() const { 
         return name; 
     }
+
     double getAmount() const { 
         return amount; 
     }
+
     std::string getId() const { 
         return id; 
     }
@@ -55,9 +56,11 @@ public:
     void setName(const std::string& newName) { 
         name = newName; 
     }
+
     void deposit(double value) { 
         amount += value; 
     }
+
     bool withdraw(double value) {
         if (value > amount) return false;
         amount -= value;

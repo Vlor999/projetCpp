@@ -82,3 +82,7 @@
     name : Steve Walker;
     amount : 2500; 
 }
+{
+    name : will;
+    amount : 100.000000;
+}
