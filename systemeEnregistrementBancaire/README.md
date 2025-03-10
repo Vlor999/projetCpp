@@ -23,3 +23,5 @@ Pour supprimer les fichiers objets et l'executable :
 ```sh
 make clean
 ```
+## Contributions : 
+- [stackoverflow](https://stackoverflow.com/questions/61919292/c-how-do-i-erase-a-line-from-the-console)
