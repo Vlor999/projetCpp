@@ -21,12 +21,12 @@ void ajoutCompteAll(string filename, vector<BanqueAccount>& listBanque){
 }
 
 BanqueAccount foundCompte(vector<BanqueAccount>& listBanque){
-    string name;
-    cout << "Nom du compte : ";
-    getline(cin, name);
+    string id;
+    cout << "ID du compte : ";
+    getline(cin, id);
     bool found = false;
     for (const BanqueAccount& account : listBanque) {
-        if (account.getName() == name) {
+        if (account.getId() == id) { // Il est plus normal de comparer les ID des comptes que les noms
             account.display();
             found = true;
             return account;
@@ -42,9 +42,11 @@ void gestionCompte(BanqueAccount& account, string filename, vector<BanqueAccount
     cout << "Gestion du compte\n";
     cout << "1. Déposer de l'argent\n";
     cout << "2. Retirer de l'argent\n";
-    cout << "3. Supprimer le compte\n";
-    cout << "4. Retour\n";
+    cout << "3. Afficher information\n";
+    cout << "4. Supprimer le compte\n";
+    cout << "5. Retour\n";
     cout << "Votre choix : ";
+    int taille = 8; // Nombre de lignes à effacer
     int choice;
     cin >> choice;
     cin.ignore();
@@ -52,6 +54,7 @@ void gestionCompte(BanqueAccount& account, string filename, vector<BanqueAccount
 
     switch (choice) {
         case 1: {
+            clearTerminal(taille);
             double value;
             cout << "Montant à déposer : ";
             cin >> value;
@@ -62,6 +65,7 @@ void gestionCompte(BanqueAccount& account, string filename, vector<BanqueAccount
             break;
         }
         case 2: {
+            clearTerminal(taille);
             double value;
             cout << "Montant à retirer : ";
             cin >> value;
@@ -74,18 +78,26 @@ void gestionCompte(BanqueAccount& account, string filename, vector<BanqueAccount
             isModified = true;
             break;
         }
-        case 3: {
+        case 3:{
+            clearTerminal(taille);
+            account.display();
+            break;
+        }
+        case 4: {
+            clearTerminal(taille);
             cout << "Suppression du compte\n";
             supprimeCompte(filename, account);
             listBanque.erase(std::remove(listBanque.begin(), listBanque.end(), account), listBanque.end());
             cout << "Compte supprimé avec succès.\n";
             break;
         }
-        case 4: {
+        case 5: {
+            clearTerminal(taille);
             cout << "Retour au menu principal.\n";
-            break;
+            return;
         }
         default: {
+            clearTerminal(taille);
             cout << "Choix invalide.\n";
             break;
         }
@@ -93,6 +105,15 @@ void gestionCompte(BanqueAccount& account, string filename, vector<BanqueAccount
     if (isModified) {
         supprimeCompte(filename, account);
         ajouteCompte(filename, account);
+    }
+    gestionCompte(account, filename, listBanque);
+}
+
+void clearTerminal(int taille){
+    for (int i = 1; i < taille; i++) {
+        std::cout
+        << "\x1b[1A"
+        << "\x1b[2K";
     }
 }
 
@@ -109,25 +130,29 @@ void launchMenu(vector<BanqueAccount>& listBanque, string filename){
     cin.ignore();
 
     bool isEnd = false;
+    int taille = 8; // Nombre de lignes à effacer : nombre de retour a la ligne + 1
 
     switch (choice) {
         case 1: { // ajout d'un compte
+            clearTerminal(taille);
             ajoutCompteAll(filename, listBanque);
             break;
         }
         case 2: { // affichage des comptes
+            clearTerminal(taille);
             cout << "📋 Liste des comptes bancaires :\n";
             for (const BanqueAccount& account : listBanque) {
                 account.display();
-                cout << "-------------------\n";
             }
             break;
         }
         case 3: { // recherche d'un compte
+            clearTerminal(taille);
             foundCompte(listBanque);
             break;
         }
         case 4: {
+            clearTerminal(taille);
             cout << "Connecter un compte\n";
             BanqueAccount account = foundCompte(listBanque);
             if (account.isAccountExist()){
@@ -136,11 +161,13 @@ void launchMenu(vector<BanqueAccount>& listBanque, string filename){
             break;
         }
         case 5: {
+            clearTerminal(taille);
             cout << "Fermeture du programme.\n";
             isEnd = true;
             break;
         }
         default: {
+            clearTerminal(taille);
             cout << "Choix invalide.\n";
             break;
         }

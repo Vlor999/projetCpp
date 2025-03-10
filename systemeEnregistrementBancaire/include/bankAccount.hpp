@@ -79,8 +79,20 @@ public:
     }
 
     void display() const {
-        cout << "Compte: " << name << " (ID: " << id << ")\n"
-             << "Solde: " << amount << " €" << endl;
+        string firstLine = "| Compte: " + name + " (ID: " + id + ")";
+        string secondLine = "| Solde: " + to_string(amount) + " €";
+        int size = firstLine.size();
+        int size2 = secondLine.size();
+        int maxSize = max(size, size2);
+        string line(maxSize, '-');
+        line = "+" + line + "+";
+        int lengthLine = line.size();
+        firstLine += string(lengthLine - size - 1, ' ') + "|";
+        secondLine += string(lengthLine - size2 + 1, ' ') + "|";
+        cout << line << endl;
+        cout << firstLine << endl;
+        cout << secondLine << endl;
+        cout << line << endl;
     }
 
     bool operator==(const BanqueAccount& other) const {

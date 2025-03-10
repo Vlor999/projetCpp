@@ -1,11 +1,11 @@
 {
     name : willem Adnet;
-    amount : 0; 
+	amount : 10;
     id : 1;
 }
 {
     name : John Doe;
-    amount : 1500; 
+    amount : 150000000; 
     id : 2;
 }
 {
@@ -112,4 +112,14 @@
     name : tutu;
     amount : 120.000000;
     id : 605a3a75-cf0a-42c4-a372-1c66f893efdb;
+}
+{
+    name : will;
+    amount : 300.000000;
+    id : 938bfcfd-8f6c-4043-a7f6-e0e6e7581403;
+}
+{
+    name : will;
+    amount : 200.000000;
+    id : 281e2979-2dc6-42fe-97c5-7cafb42a622f;
 }

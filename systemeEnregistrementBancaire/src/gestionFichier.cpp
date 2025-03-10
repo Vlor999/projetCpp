@@ -89,7 +89,6 @@ void supprimeCompte(const string& filename, const BanqueAccount& account){
     double amount;
 
     while (getline(fileReader, currentLine)) {
-        cout << currentLine << endl;
         if (currentLine == "{") {
             isOpen = true;
         } 
