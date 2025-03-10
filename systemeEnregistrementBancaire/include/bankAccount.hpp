@@ -30,16 +30,23 @@ namespace uuid {
 }
 
 class BanqueAccount {
+    
 private:
-    std::string name;
+    string name;
     double amount;
-    std::string id;
+    string id;
+    bool isAccount = true;
 
 public:
+    BanqueAccount(const std::string& name, double initialAmount, const std::string& id)
+        : name(name), amount(initialAmount), id(id) {}
+
     BanqueAccount(const std::string& name, double initialAmount)
         : name(name), amount(initialAmount), id(uuid::generate_uuid_v4()) {}
 
     BanqueAccount(const std::string& name) : BanqueAccount(name, 0) {}
+
+    BanqueAccount() : BanqueAccount("Compte inconnu") {this->isAccount = false;}
 
     std::string getName() const { 
         return name; 
@@ -51,6 +58,10 @@ public:
 
     std::string getId() const { 
         return id; 
+    }
+
+    bool isAccountExist() const {
+        return isAccount;
     }
 
     void setName(const std::string& newName) { 
@@ -70,5 +81,9 @@ public:
     void display() const {
         cout << "Compte: " << name << " (ID: " << id << ")\n"
              << "Solde: " << amount << " €" << endl;
+    }
+
+    bool operator==(const BanqueAccount& other) const {
+        return this->id == other.id;
     }
 };
